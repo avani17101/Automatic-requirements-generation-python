@@ -7,18 +7,19 @@
 
 
 
-#get all files with .py
+
 import os
 import numpy as np
 import sys
 
 
 def scan_sub(pw):
+    #get all files with .py or .ipynb
     py_files = []
     for it in os.scandir(pw):
         if it.is_dir():
             for file in os.listdir(it.path):
-                if file.endswith(".py"):
+                if file.endswith(".py") or file.endswith(".ipynb"):
                     py_files.append(os.path.join(it.path, file))
     return py_files
 
@@ -26,7 +27,6 @@ sub_dir = 0
 py_files = []
 
 # handle args
-
 pw = os.getcwd()
 if(len(sys.argv)>1):
     print(sys.argv[1])
@@ -42,7 +42,7 @@ if(len(sys.argv)>2):
 
 if(sub_dir==0):
     for file in os.listdir(pw):
-        if file.endswith(".py"):
+        if file.endswith(".py") or file.endswith(".ipynb"):
             py_files.append(os.path.join(pw, file))
 else:
     py_files = scan_sub(pw)
