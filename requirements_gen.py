@@ -23,14 +23,14 @@ def scan_sub(pw):
                     py_files.append(os.path.join(it.path, file))
     return py_files
 
-sub_dir = 0
+sub_dir = 0  #flag: scan subdirectory or not
 py_files = []
 
 # handle args
 pw = os.getcwd()
 if(len(sys.argv)>1):
     print(sys.argv[1])
-    if(sys.argv[1]=='1' or sys.argv[1]=='0'):
+    if(sys.argv[1]=='1'):
         sub_dir = 1
     else: 
 	    pw = (sys.argv[1])
@@ -52,25 +52,26 @@ print(py_files)
 # get all libs from a file
 def get_libs(file_name):
     with open(file_name) as f:
-        s = []
+        libs = []
         for line in f:
+            line = line.lstrip()
             if("import" in line and "i"==line[0]):
                 l = line.split(' ')
                 lib = l[1].replace('\n','')
                 if "." in lib:
                     lib = lib.split('.')
-                    s.append(lib[0])
+                    libs.append(lib[0])
                 else:
-                    s.append(lib)
+                    libs.append(lib)
             if("from" in line and "f"==line[0]):
                 l = line.split(' ')
                 lib = l[1].replace('\n','')
                 if "." in lib:
                     lib = lib.split('.')
-                    s.append(lib[0])
+                    libs.append(lib[0])
                 else:
-                    s.append(lib)
-    return s
+                    libs.append(lib)
+    return libs
 
 #appending libaries of all python files
 raw_reqs = []
@@ -82,6 +83,7 @@ for f in py_files:
 #writing to requirements.txt (note: this is raw requirements user must look into compatibility etc)
 raw_reqs = np.array(raw_reqs)
 raw_reqs = np.unique(raw_reqs)
+
 
 f = open('requirements.txt','w')
 for lib in raw_reqs:
