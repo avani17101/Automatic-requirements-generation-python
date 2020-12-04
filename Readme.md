@@ -10,25 +10,27 @@ It is made to make our lives easier in cases where requirements.txt is not provi
 <path dir> is the path of directory to be scanned 
 if <path dir> is not given it scans the current directory
 <subdir_flag> is 1 if user wants to get libraries of sub directory
-### Cases handleded (again to make life easier)
-
-* ```bash
+ 
+#### Example (again to make life easier)
+* Scan the current directory
+ ```bash
  python3 requirements_gen.py 
 ```
-Will scan the current directory 
 
-* ```bash
+* Scan the current directory and it's subdirectories
+ ```bash
  python3 requirements_gen.py 1
 ```
-will scan the correct directory and it's subdirectories
 
-*  ```bash
+* Scan the directory given in path
+ ```bash
  python3 requirements_gen.py <path>
 ```
-Will scan the directory given in path
 
-*  ```bash
+
+* Scan the directory and subdirectories in directory whose path given
+```bash
  python3 requirements_gen.py <path> 1
 ```
-Will scan the directory and subdirectories in directory whose path given
+
 
