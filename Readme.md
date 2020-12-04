@@ -1,7 +1,7 @@
 # Automatic generation of requirements.txt 
 
 This is a script for generating requirements.txt given any folder conatining python files.
-It is made to make our lives easier in cases where requirements.txt is not provided and we need to scan through each python file to check libraries needed. <br>
+It is made to make our lives easier in cases where requirements.txt is not provided and we need to manually go through each python file to check for libraries needed. <br>
 The script will generate requirements.txt file containing libraries of all imports in python files. <br>
 
 
